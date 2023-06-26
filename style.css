@@ -9,6 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    transition: background-color 0.3s ease;
 }
 
 header {
@@ -33,8 +34,44 @@ nav ul li a {
     padding: 10px;
 }
 
+nav button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.moon,
+.sun {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.moon {
+    background-color: #fff;
+}
+
+.sun {
+    background-color: #fdbc40;
+}
+
+.dark-mode .moon {
+    transform: translateX(20px);
+}
+
+.dark-mode .sun {
+    transform: translateX(0);
+}
+
 section {
     padding: 20px;
+    transition: opacity 0.3s ease;
 }
 
 footer {
@@ -51,4 +88,40 @@ h1, h2, h3 {
 
 .projet {
     margin-bottom: 20px;
+}
+
+.dark-mode {
+    background-color: #222;
+    color: #fff;
+}
+
+.dark-mode nav button {
+    color: #fff;
+}
+
+.dark-mode section {
+    opacity: 0.8;
+}
+
+.dark-mode footer {
+    background-color: #222;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Mon Portfolio</title>
 </head>
-
 <body>
     <header>
         <nav>
@@ -17,6 +15,10 @@
                 <li><a href="#a-propos">À Propos</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <span class="moon"></span>
+                <span class="sun"></span>
+            </button>
         </nav>
     </header>
 
@@ -40,16 +42,19 @@
     <section id="a-propos">
         <h2>À Propos de Moi</h2>
         <p>Je suis un développeur passionné par les nouvelles technologies.</p>
+        <p>J'ai acquis une solide expérience dans le développement web et je suis spécialisé dans les langages HTML, CSS et JavaScript.</p>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
         <p>N'hésitez pas à me contacter pour toute demande ou collaboration.</p>
+        <p>Vous pouvez m'envoyer un e-mail à l'adresse : <a href="mailto:contact@example.com">contact@example.com</a></p>
     </section>
 
     <footer>
         <p>&copy; 2023 Mon Portfolio. Tous droits réservés.</p>
     </footer>
-</body>
 
+    <script src="script.js"></script>
+</body>
 </html>
