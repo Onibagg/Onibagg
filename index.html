@@ -1,66 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+ 
+<nav class="menu">
+  <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+  <label class="menu-open-button" for="menu-open">
+    <span class="hamburger hamburger-1"></span>
+    <span class="hamburger hamburger-2"></span>
+    <span class="hamburger hamburger-3"></span>
+  </label>
+  
+  <a href="#" class="menu-item" style="text-decoration: none;">1</a>
+  <a href="#" class="menu-item" style="text-decoration: none;">2</a>
+  <a href="#" class="menu-item" style="text-decoration: none;">3</a>
+  <a href="#" class="menu-item" style="text-decoration: none;">4</a>
+  
+  
+</nav>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Mon Portfolio</title>
-</head>
 
-<body>
-    <header>
-        <div class="nav-toggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#a-propos">À Propos</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="accueil">
-        <h1>Bienvenue sur mon portfolio !</h1>
-        <p>Je suis un développeur passionné par la création de sites web.</p>
-    </section>
-
-    <section id="projets">
-        <h2>Mes Projets</h2>
-        <div class="projet">
-            <h3>Projet 1</h3>
-            <p>Description du projet 1.</p>
-        </div>
-        <div class="projet">
-            <h3>Projet 2</h3>
-            <p>Description du projet 2.</p>
-        </div>
-    </section>
-
-    <section id="a-propos">
-        <h2>À Propos de Moi</h2>
-        <p>Je suis un développeur passionné par les nouvelles technologies.</p>
-        <p>J'ai acquis une solide expérience dans le développement web et je suis spécialisé dans les langages HTML, CSS
-            et JavaScript.</p>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>N'hésitez pas à me contacter pour toute demande ou collaboration.</p>
-        <p>Vous pouvez m'envoyer un e-mail à l'adresse : <a href="mailto:contact@example.com">contact@example.com</a>
-        </p>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Mon Portfolio. Tous droits réservés.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-
-</html>
+<!-- filters -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="shadowed-goo">
+          
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+          <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+          <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+          <feComposite in2="shadow" in="goo" result="goo" />
+          <feComposite in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+      <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          <feComposite in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+    </defs>
+</svg>
