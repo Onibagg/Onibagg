@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <title>Parallax Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #A8B090;
+            height: 5000px;
+            ;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 1258px;
+            overflow: hidden;
+        }
+
+        .container .bg {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(Images/bg.png);
+            background-size: cover;
+        }
+
+        .container .bg2 {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(Images/bg2.png);
+            background-size: cover;
+        }
+
+        .container .bg3 {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(Images/bg3.png);
+            background-size: cover;
+        }
+
+        .container .bg4 {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(Images/bg4.png);
+            background-size: cover;
+        }
+
+        .container .bg5 {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(Images/bg5.png);
+            background-size: cover;
+        }
+
+        .text {
+            color: antiquewhite;
+            padding-top: 30px;
+            padding-left: 50px;
+            padding-right: 50px;
+            text-align: center;
+
+        }
+
+        .text h1 {
+            font-size: 70px;
+
+        }
+
+        #scrollMessage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Couleur de fond transparente */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            opacity: 1;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            /* Empêche l'élément de bloquer les interactions utilisateur */
+            z-index: 9999;
+            /* Valeur élevée pour placer l'élément par-dessus le reste de la page */
+        }
+
+        #scrollArrow {
+            animation: arrowBounce 1s infinite;
+        }
+
+        @keyframes arrowBounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="scrollMessage">
+        <div id="scrollArrow">
+            <img src="Images/arrow.png" style="height: 80px; filter: invert(0.7);">
+        </div>
+    </div>
+    <div class="container">
+        <div class="bg"></div>
+        <div class="bg2"></div>
+        <div class="bg3"></div>
+        <div class="bg4"></div>
+        <div class="bg5"></div>
+
+    </div>
+    <div class="text">
+        <h1>Gabin Demé</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem in porro, laudantium, a commodi odit aspernatur
+            optio error provident veritatis atque odio impedit tempora mollitia facilis perferendis pariatur deleniti
+            quae eos labore fuga? Tempora nobis voluptas nisi deserunt voluptates eveniet temporibus, totam sunt minima
+            porro nam. Similique nulla aspernatur vel tempore optio, eos ducimus aliquam natus debitis fugiat aperiam
+            beatae laudantium nostrum consectetur. Illum dolorum, porro officia error laboriosam dolorem quaerat
+            asperiores, quos dicta velit aut possimus eos quisquam iusto cum iure fugiat cupiditate? Qui numquam, ad
+            illo dignissimos sapiente similique ipsa reprehenderit. Ducimus perspiciatis omnis aliquam ratione voluptate
+            autem suscipit expedita exercitationem nam, nostrum harum est voluptatibus nihil voluptas quas consequatur
+            voluptates accusamus possimus culpa asperiores error illo repellendus? Aperiam velit animi quo laudantium
+            quisquam, est totam. Voluptas expedita dicta rem eaque corrupti dolores maxime assumenda alias perferendis
+            quasi perspiciatis cupiditate, adipisci quos. Magnam, facere ad officia accusantium debitis impedit pariatur
+            doloremque voluptas a quisquam ullam modi minus eius eum officiis deleniti eaque obcaecati corporis aliquid
+            doloribus autem? Aspernatur, neque! Illum id distinctio tenetur ex perspiciatis quos! Laborum quasi expedita
+            sequi laudantium assumenda quo ipsum molestiae vel omnis cupiditate accusamus adipisci modi, dignissimos
+            doloribus minima. Odit omnis in nihil!
+        </p>
+    </div>
+    <script>
+        $(window).scroll(function () {
+            var winScroll = $(this).scrollTop();
+            // console.log(winScroll);
+            $('.bg').css({
+                'transform': 'translate(0,' + winScroll / 14 + '%)'
+            });
+            $('.bg2').css({
+                'transform': 'translate(0,' + winScroll / 20 + '%)'
+            });
+            $('.bg3').css({
+                'transform': 'translate(0,' + winScroll / 35 + '%)'
+            });
+            $('.bg4').css({
+                'transform': 'translate(0,' + winScroll / 70 + '%)'
+            });
+            $('.bg5').css({
+                'transform': 'translate(0,' + winScroll / 700 + '%)'
+            });
+        });
+    </script>
+</body>
+
+</html>
