@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
   <script src="script.js"></script>
   <title>Parallax Test</title>
   <style>
   </style>
+</head>
 
 <body>
 
@@ -25,30 +26,12 @@
     </div>
   </div>
 
-  <span style="font-size:50px;cursor:pointer; position: fixed; top: 10px; left: 10px;z-index: 9999;"
-    onclick="openNav()">&#9776;</span>
+  <span id="menu" onclick="openNav()">&#9776;</span>
 
-  <button id="myButton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-    Ouvrir le modal
-  </button>
+  <a href="connexion.php">
+    <img  id="connexion" src="Images/person.png">
+  </a>
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Contenu du modal...</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button type="button" class="btn btn-primary">Enregistrer</button>
-        </div>
-      </div>
-    </div>
   </div>
   <div id="scrollMessage">
     <div id="scrollArrow">
