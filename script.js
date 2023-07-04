@@ -23,3 +23,12 @@ $(window).scroll(function () {
     'transform': 'translate(0,' + winScroll / 700 + '%)'
   });
 });
+
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+
