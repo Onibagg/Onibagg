@@ -35,46 +35,112 @@ if ($submitted) {
 </head>
 
 <body>
-    <form action="" class="<?php if (isset($_POST['submit'])) echo 'was-validated'; ?>">
-        <div class="row">
+    <button type="button" class="btn btn-outline-dark text-black custom-btn" data-bs-toggle="modal" data-bs-target="#myModal" style="width: 150px; height: 130px;" onmouseover="document.getElementById('texte5').style.fontWeight='bold';" onmouseout="document.getElementById('texte5').style.fontWeight='normal';">
+        <img id="connexion" src="Images/person.png" width="40" height="40" class="rounded" alt="Connexion"></br></br>
+        <p id="texte5">Connexion</p>
+    </button>
 
-            <div class="col">
-                <a href="/">
-                    <img src="Images/maison.png" style="height: 100px;">
-                </a>
-
-
-            </div>
-            <div class="col">
-                <div class="card mt-5">
-                    <div class="card-header display-4">Connexion</div>
-                    <div class="card-body">
-
-                        <div class=" ms-5 me-5 mb-3 mt-3">
-                            <label for="uname">Nom d'utilisateur:</label>
-                            <input type="text" class="form-control" id="uname" placeholder="Entrez votre nom d'utilisateur" name="uname" required>
-                            <div class="valid-feedback">OK.</div>
-                            <div class="invalid-feedback">Veuillez remplir ce champ.</div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="login-form">
+                    <form id="connexion" action="connexion.php" method="POST" class="needs-validation">
+                        <div class="modal-header">
+                            <p class="modal-title display-5">Connexion</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
-                        <div class=" ms-5 me-5 mb-5">
-                            <label for="pwd" class="form-label">Mot de passe:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Entrez votre mot de passe" name="pswd" required>
-                            <div class="valid-feedback">OK.</div>
-                            <div class="invalid-feedback">Veuillez remplir ce champ.</div>
+                        <div class="modal-body">
+
+                            <br>
+                            <div class="form-group">
+                                <label for="uname" class="form-label">Utilisateur:</label>
+                                <input type="text" class="form-control" id="user" name="user" placeholder="Utilisateur" required>
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-feedback">Veuillez compléter ce champ</div>
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <label>Mot de passe</label>
+                                <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Mot de passe" required>
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-feedback">Veuillez compléter ce champ</div>
+                            </div>
+                            <!-- 
+                        <div class="form-group">
+                            <a href="reset-password.php">Mot de passe oublié ?</a>
+                        </div> 
+                        -->
+                            <br>
+                            <div class="form-group">
+                                Pas de compte? <a href="new-account.php">Faire une demande</a>
+                            </div>
+
                         </div>
-                        <button type="submit" class="mt-2 btn btn-primary">Submit</button>
-                    </div>
+
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <button type="submit" name="connexion" class="btn btn-outline-dark">Se connecter</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <?php if ($submitted && !$valid) : ?>
-                    <div class="error-message">Invalid username or password.</div>
-                <?php endif; ?>
-                <?php if ($submitted && $valid) : ?>
-                    <div class="success-message">Login successful.</div>
-                <?php endif; ?>
+                <?php
+                if (isset($_POST['connexion'])) {
+                    connexion();
+                } else {
+                }
+                ?>
             </div>
-            <div class="col"></div>
         </div>
-    </form>
+    </div>
 </body>
 
 </html>
+
+<?php
+
+
+function file_decod($file)
+{
+    return json_decode(file_get_contents($file), true);
+}
+
+function connexion()
+{
+    if (!isset($_POST['user'])) {
+        echo 'Utilisateur non renseigné';
+        $user = "";
+    } else {
+        $user = $_POST['user'];
+    }
+
+    if (!isset($_POST['mdp'])) {
+        echo 'Mot de Passe non renseigné';
+        $mdp = "";
+    } else {
+        $mdp = $_POST['mdp'];
+    }
+
+    $data = file_decod('Json/user.json');
+    $ok = false;
+
+    // foreach ($data as $u) {
+    //     if ($u['user'] == $user && password_verify($mdp, $u['mdp']) == true) {
+    //         $ok = true;
+    //         break;
+    //     }
+    // }
+    foreach ($data as $u) {
+        if ($u['username'] == $user && $u['password'] == $mdp ) {
+            $ok = true;
+            break;
+        }
+    }
+
+    if ($ok) {
+        $_SESSION["user"] = $user;
+        echo '<meta http-equiv="refresh" content="0; url=intranet.php">';
+    }
+}
+?>
