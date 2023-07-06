@@ -105,10 +105,10 @@ if (isset($_POST['nomDossier'])) {
             mkdir($cheminNouveauDossier);
 
             // Afficher un message de succès
-            echo '<div class="alert alert-success" role="alert">Le dossier "' . $nouveauDossier . '" a été créé avec succès.</div>';
+            // echo '<div class="alert alert-success" role="alert">Le dossier "' . $nouveauDossier . '" a été créé avec succès.</div>';
         } else {
             // Afficher un message d'erreur si le dossier existe déjà
-            echo '<div class="alert alert-danger" role="alert">Le dossier "' . $nouveauDossier . '" existe déjà.</div>';
+            // echo '<div class="alert alert-danger" role="alert">Le dossier "' . $nouveauDossier . '" existe déjà.</div>';
         }
     }
 }
