@@ -1,0 +1,46 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+    color: green;
+    font-family: 'Courier New', monospace;
+}
+
+#terminal {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    padding: 20px;
+    overflow: auto; /* Ensure terminal is scrollable */
+}
+
+#output {
+    white-space: pre-wrap;
+    min-height: 95%; /* Adjust based on your layout */
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.prompt {
+    color: green;
+    user-select: none; /* prevents the prompt from being selected */
+}
+
+input[type="text"] {
+    flex: 1; /* takes up the rest of the line */
+    border: none;
+    background-color: black;
+    color: green;
+    font-size: 16px;
+    padding: 8px 0;
+    caret-color: green;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
