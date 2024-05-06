@@ -1,0 +1,60 @@
+#terminal {
+    cursor: text;
+}
+
+#inputArea {
+    outline: none;
+    background-color: black;
+    color: white;
+    
+}
+
+span, #inputArea {
+    vertical-align: middle;
+    font-family: monospace;
+    font-size: 20px;
+    display: inline-block;
+}
+
+#inputArea {
+    resize: none;
+    border: none; 
+    margin-left: 9px;
+}
+#help_out {
+    color: white;
+    margin-left: 1%;
+    margin-top: 0%;
+}
+
+#false_1 {
+    color: red;
+    margin-left: 1%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+#false_2 {
+    color: white;
+    margin-left: 1%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+#glow_cmd {
+    text-shadow: 
+        0 0 30px white,
+        0 0 20px white,
+        0 0 10px white;
+}
+
+
+body {
+    font-family: monospace; 
+    font-size: 20px;
+    background-color: black;
+    color: white;
+}
+
+
+
