@@ -1,11 +1,11 @@
 #terminal {
     cursor: text;
-}
+}rzer
 
 #inputArea {
     outline: none;
     background-color: black;
-    color: white;
+    color: rgb(241, 202, 73);
     
 }
 
@@ -35,6 +35,12 @@ span, #inputArea {
 }
 
 #false_2 {
+    color: white;
+    margin-left: 1%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+#cv_out {
     color: white;
     margin-left: 1%;
     margin-top: 0%;
