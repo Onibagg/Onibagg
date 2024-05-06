@@ -1,40 +1,55 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const terminal = document.getElementById('terminal');
-    const output = document.getElementById('output');
+function scrollToBottom() {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+}
 
-    function createInput() {
-        const inputLine = document.createElement('div');
-        inputLine.className = 'input-line';
-        const prompt = document.createElement('span');
-        prompt.textContent = '$ ';
-        prompt.className = 'prompt';
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.className = 'terminal-input';
-        input.autofocus = true;
+const observer = new MutationObserver((mutations) => {
+    scrollToBottom(); // Scroll to bottom every time a mutation occurs
+});
 
-        input.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' && this.value.trim() !== '') {
-                handleCommand(this.value);
-                this.value = ''; // Clear the input
-            }
-        });
+observer.observe(document.body, {
+    childList: true, // direct children changes
+    subtree: true, // all descendants changes
+    characterData: true // text changes
+});
+// observer.disconnect();
 
-        inputLine.appendChild(prompt);
-        inputLine.appendChild(input);
-        output.prepend(inputLine); // Place new input at the top
-        input.focus();
+document.addEventListener('DOMContentLoaded', function() {
+    var inputArea = document.getElementById('inputArea');
+    inputArea.focus(); // Met le focus sur la textarea dès que le DOM est chargé
+});
+
+document.addEventListener('click', function(event) {
+    var inputArea = document.getElementById('inputArea');
+
+    // Vérifie si l'élément cliqué est la textarea ou pas
+    if (event.target !== inputArea) {
+        inputArea.focus();
     }
+}, false);
 
-    function handleCommand(command) {
-        const commandOutput = document.createElement('div');
-        commandOutput.textContent = `$ ${command}`;
-        output.prepend(commandOutput);
-        // Expand this function to handle different commands
-        const result = document.createElement('div');
-        result.textContent = `Command '${command}' executed.`; // Placeholder response
-        output.prepend(result);
+document.getElementById('inputArea').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Empêche le retour à la ligne dans la textarea
+        var inputText = this.value.trim(); // Utilisez trim ici pour nettoyer l'entrée dès le départ
+        
+        switch (inputText) {
+            case 'clear':
+                document.getElementById('output').innerHTML = ''; // Efface tout le contenu de la div
+                break;
+            case '':
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + '<br>'; // Ajoute simplement une nouvelle ligne
+                break;
+            case 'help':
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="help_out">Available commands: clear, help<p>';
+                break;
+            default:
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<br>' + `command not found: ${inputText}.<br>Type 'help' to view a list of available commands.<br>`;
+                break;
+        }
+        
+        this.value = ''; // Efface le contenu de la textarea après l'envoi
     }
-
-    createInput(); // Initial call to create input
 });

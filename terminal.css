@@ -1,46 +1,37 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    background-color: black;
-    color: green;
-    font-family: 'Courier New', monospace;
-}
-
 #terminal {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Align items to the top */
-    padding: 20px;
-    overflow: auto; /* Ensure terminal is scrollable */
+    cursor: text;
 }
 
-#output {
-    white-space: pre-wrap;
-    min-height: 95%; /* Adjust based on your layout */
-}
-
-.input-line {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.prompt {
-    color: green;
-    user-select: none; /* prevents the prompt from being selected */
-}
-
-input[type="text"] {
-    flex: 1; /* takes up the rest of the line */
-    border: none;
-    background-color: black;
-    color: green;
-    font-size: 16px;
-    padding: 8px 0;
-    caret-color: green;
-}
-
-input[type="text"]:focus {
+#inputArea {
     outline: none;
 }
+
+span, #inputArea {
+    vertical-align: middle;
+    font-family: monospace;
+    font-size: 20px;
+
+}
+
+#inputArea {
+    resize: none;
+    border: none; 
+    margin-left: 9px;
+}
+#help_out {
+    color: black;
+    margin-left: 1%;
+    margin-top: 0%;
+}
+
+body {
+    font-family: monospace; 
+    font-size: 20px;
+}
+
+span, #inputArea {
+    vertical-align: middle; /* Ajustez cette propriété si nécessaire, par exemple à 'top' */
+    display: inline-block; /* S'assurer que les éléments sont traités comme des blocs en ligne */
+}
+
+
