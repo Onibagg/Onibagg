@@ -1,11 +1,11 @@
 #terminal {
     cursor: text;
-}rzer
+}
 
 #inputArea {
     outline: none;
     background-color: black;
-    color: rgb(241, 202, 73);
+    color: rgb(255, 255, 255);
     
 }
 
@@ -62,5 +62,29 @@ body {
     color: white;
 }
 
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
+.blinking-cursor::after {
+    content: '|';
+    animation: blink 1s infinite step-start;
+    margin-left: 2px; /* Adjust if needed */
+}
 
+/* Apply the blinking cursor to the input area */
+#inputArea {
+    position: relative;
+}
+
+#inputArea.blinking-cursor {
+    border-right: 2px solid white;
+}

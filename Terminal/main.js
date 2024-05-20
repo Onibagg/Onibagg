@@ -93,6 +93,13 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
                 link.click();
                 document.body.removeChild(link);
                 break;
+            case 'banner':
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="banner_out>';
+                var outputDiv = document.getElementById('output');
+                outputDiv.innerHTML += `<pre>${mergedBanner}</pre>`;
+                outputDiv.innerHTML += 'Welcome to Gabin Demé\'s Terminal!<br>';
+                outputDiv.innerHTML += 'Type <gab id="glow_cmd">help</gab> to view a list of available commands.</p><br><br>';
+                break;
             default:
                 document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + `<br><p id="false_1">command not found: ${inputText}</p><p id="false_2">Type <gab id="glow_cmd">help</gab> to view a list of available commands.</p><br>`;
                 break;
