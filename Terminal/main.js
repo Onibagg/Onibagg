@@ -93,7 +93,7 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
                 link.click();
                 document.body.removeChild(link);
                 break;
-            case 'projecs':
+            case 'projects':
                 var projects = [
                     {
                         title: "gabindeme.com",
