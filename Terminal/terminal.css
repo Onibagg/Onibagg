@@ -88,3 +88,27 @@ body {
 #inputArea.blinking-cursor {
     border-right: 2px solid white;
 }
+
+.centered-link {
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    color: white;
+    text-shadow: 
+        0 0 10px white;
+}
+
+.link-container {
+    display: flex;
+    align-items: center;
+}
+
+.link-container a {
+    display: flex;
+    align-items: center;
+    margin-right: 8px; /* Ajoute un espace entre les liens */
+}
+
+.link-container a svg {
+    margin-right: 4px; /* Espace entre le SVG et le texte */
+}
