@@ -1,9 +1,0 @@
-body {
-    /* display: flex; */
-    justify-content: center;
-
-    align-items: center;
-    overflow-x: hidden;
-    height: 100vh;
-    background: linear-gradient(to bottom right, #355C7D, #6C5B7B);
-}

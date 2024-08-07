@@ -21,42 +21,19 @@ document.addEventListener('DOMContentLoaded', function() {
     inputArea.focus(); // Met le focus sur la textarea dès que le DOM est chargé
 
     var banner = [
-        "           /\\                  ",
-        "          /**\\                 ",
-        "         /****\\   /\\      ",
-        "        /      \\ /**\\     ",
-        "       /  /\\    /    \\    ",
-        "      /  /  \\  /      \\   ",
-        "     /  /    \\/ /\\     \\  ",
-        "    /  /      \\/  \\/\\   \\ ",
-        "   /__/_______/___/\\_\\___\\ "
+        "          /\\                   ",
+        "         /**\\                  ",
+        "        /****\\   /\\         ______      __    _          ____                  __  ",
+        "       /      \\ /**\\       / ____/___  / /_  (_)___     / __ \\___  ____ ___  _/_/  ",
+        "      /  /\\    /    \\     / / __/ __ `/ __ \\/ / __ \\   / / / / _ \\/ __ `__ \\/ _ \\  ",
+        "     /  /  \\  /      \\   / /_/ / /_/ / /_/ / / / / /  / /_/ /  __/ / / / / /  __/  ",
+        "    /  /    \\/ /\\     \\  \\____/\\__,_/_.___/_/_/ /_/  /_____/\\___/_/ /_/ /_/\\___/   ",
+        "   /  /      \\/  \\/\\   \\ ",
+        "  /__/_______/___/\\_\\___\\                      \u00A9 " + new Date().getFullYear()
     ];
-
-    var name_banner = [
-        "",
-        "",
-        "   ______      __    _          ____                  __",
-        "  / ____/___  / /_  (_)___     / __ \\___  ____ ___  _/_/",
-        " / / __/ __ `/ __ \\/ / __ \\   / / / / _ \\/ __ `__ \\/ _ \\",
-        "/ /_/ / /_/ / /_/ / / / / /  / /_/ /  __/ / / / / /  __/",
-        "\\____/\\__,_/_.___/_/_/ /_/  /_____/\\___/_/ /_/ /_/\\___/ ",
-        "",
-        "                     \u00A9 " + new Date().getFullYear()
-    ];
-
-    function padRight(str, length) {
-        return str + " ".repeat(Math.max(0, length - str.length));
-    }
-
-    var mergedBanner = "";
-    for (var i = 0; i < Math.max(banner.length, name_banner.length); i++) {
-        var line1 = banner[i] || ""; 
-        var line2 = name_banner[i] || ""; 
-        mergedBanner += line1 + padRight(line2, 53) + "\n"; 
-    }
 
     var outputDiv = document.getElementById('output');
-    outputDiv.innerHTML += `<pre>${mergedBanner}</pre>`;
+    outputDiv.innerHTML += `<pre class="banner">${banner.join('\n')}</pre>`;
     outputDiv.innerHTML += 'Welcome to Gabin Demé\'s Terminal!<br>';
     outputDiv.innerHTML += 'Type <gab id="glow_cmd">help</gab> to view a list of available commands.<br><br>';
 });
@@ -67,6 +44,29 @@ document.addEventListener('click', function(event) {
         inputArea.focus();
     }
 }, false);
+
+const helpCommands = [
+    { command: 'whois', description: 'Who is Gabin Demé?' },
+    { command: 'socials', description: 'Contact me' },
+    { command: 'education', description: 'Where am I from?' },
+    { command: 'cv', description: 'Check out my CV [pdf - 252KB]' },
+    { command: 'employment', description: 'Where did I work?' },
+    { command: 'projects', description: 'View my projects' },
+    { command: 'clear', description: 'Clean everithing' }
+];
+
+function generateHelpOutput() {
+    let output = '<div>Just type any of the commands below to get some more info. You can even type a few letters and press [tab] to autocomplete:<br>';
+    helpCommands.forEach(({ command, description }) => {
+        output += `<gab id="glow_cmd" class="help-command">${command}</gab><br>`;
+        if (description) {
+            output += `<span class="help-description"> - ${description}</span><br>`;
+        }
+        output += '<br>';
+    });
+    output += '</div>';
+    return output;
+}
 
 document.getElementById('inputArea').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -81,7 +81,7 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
                 document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + '<br>'; // Ajoute simplement une nouvelle ligne
                 break;
             case 'help':
-                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="help_out">Available commands: <gab id="glow_cmd">clear</gab>, <gab id="glow_cmd">help</gab>, <gab id="glow_cmd">cv</gab>, <gab id="glow_cmd">projects</gab></p>';
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="help_out">' + generateHelpOutput() + '</p>';
                 break;
             case 'cv':
                 document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<br><p id="cv_out">Downloading my CV...<p>';

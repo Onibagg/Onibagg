@@ -112,3 +112,46 @@ body {
 .link-container a svg {
     margin-right: 4px; /* Espace entre le SVG et le texte */
 }
+
+.help-command {
+    margin-left: 20px; /* Marge pour décaler les commandes */
+}
+
+.help-description {
+    margin-left: 30px; /* Marge pour décaler les descriptions */
+}
+
+.banner {
+    font-size: calc(1vw + 7px);
+    animation: glow 2s ease-in-out infinite;
+    -webkit-animation: glow 2s ease-in-out infinite alternate;
+    -moz-animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+        0 0 10px white,
+        0 0 20px white;
+    }
+    to {
+        text-shadow: 
+        0 0 0px white,
+        0 0 0px white,
+        0 0 0px white;
+    }
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow:
+        0 0 10px white,
+        0 0 20px white;
+    }
+    to {
+        text-shadow: 
+        0 0 0px white,
+        0 0 0px white,
+        0 0 0px white;
+    }
+}
