@@ -12,7 +12,7 @@
 span, #inputArea {
     vertical-align: middle;
     font-family: monospace;
-    font-size: 20px;
+    font-size: 15px;
     display: inline-block;
 }
 
@@ -54,10 +54,24 @@ span, #inputArea {
         0 0 10px white;
 }
 
+#project_out {
+    color: white;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#tab_out {
+    margin-left: 1%;
+    display: block;
+    white-space: pre; /* Conserve les espaces blancs dans le texte */
+    font-family: monospace; /* Utilise une police à largeur fixe pour un meilleur alignement */
+}
+
 
 body {
     font-family: monospace; 
-    font-size: 20px;
+    font-size: 15px;
     background-color: black;
     color: white;
 }
@@ -114,15 +128,15 @@ body {
 }
 
 .help-command {
-    margin-left: 20px; /* Marge pour décaler les commandes */
+    margin-left: 1%;
 }
 
 .help-description {
-    margin-left: 30px; /* Marge pour décaler les descriptions */
+    margin-left: 4%;
 }
 
 .banner {
-    font-size: calc(1vw + 7px);
+    font-size: calc(1vw + 3px);
     animation: glow 2s ease-in-out infinite;
     -webkit-animation: glow 2s ease-in-out infinite alternate;
     -moz-animation: glow 2s ease-in-out infinite alternate;

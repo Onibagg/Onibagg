@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "  /__/_______/___/\\_\\___\\                      \u00A9 " + new Date().getFullYear()
     ];
 
-    var outputDiv = document.getElementById('output');
+    var outputDiv = document.getElementById('banner');
     outputDiv.innerHTML += `<pre class="banner">${banner.join('\n')}</pre>`;
     outputDiv.innerHTML += 'Welcome to Gabin Demé\'s Terminal!<br>';
     outputDiv.innerHTML += 'Type <gab id="glow_cmd">help</gab> to view a list of available commands.<br><br>';
@@ -55,6 +55,10 @@ const helpCommands = [
     { command: 'clear', description: 'Clean everithing' }
 ];
 
+function findMatchingCommand(input) {
+    return helpCommands.filter(cmd => cmd.command.startsWith(input));
+}
+
 function generateHelpOutput() {
     let output = '<div>Just type any of the commands below to get some more info. You can even type a few letters and press [tab] to autocomplete:<br>';
     helpCommands.forEach(({ command, description }) => {
@@ -68,11 +72,22 @@ function generateHelpOutput() {
     return output;
 }
 
+const commandHistory = [];
+let historyIndex = -1;
+
 document.getElementById('inputArea').addEventListener('keydown', function(event) {
+    const inputArea = this;
+    const inputText = inputArea.value.trim();
+    
     if (event.key === 'Enter') {
         event.preventDefault(); // Empêche le retour à la ligne dans la textarea
-        var inputText = this.value.trim(); // Trim ici pour nettoyer l'entrée dès le départ
         
+        // Ajout de la commande à l'historique
+        if (inputText !== '') {
+            commandHistory.push(inputText);
+            historyIndex = commandHistory.length; // Réinitialise l'index de l'historique
+        }
+
         switch (inputText) {
             case 'clear':
                 document.getElementById('output').innerHTML = ''; // Efface tout le contenu de la div
@@ -119,7 +134,7 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
                 document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<br>';
                 projects.forEach(project => {
                     document.getElementById('output').innerHTML += `
-                        <p id="project_out">
+                        <span id="project_out">
                             <strong>${project.title}</strong><br>
                             ${project.description}<br>
                             <span class="link-container">
@@ -146,7 +161,7 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
                                     </svg> Code
                                 </a>
                             </span>
-                        </p>
+                        </span>
 
                     `;
                 });
@@ -157,5 +172,31 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
         }
         
         this.value = ''; // Efface le contenu de la textarea après l'envoi
+    } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (historyIndex > 0) {
+            historyIndex--;
+            inputArea.value = commandHistory[historyIndex];
+        }
+    } else if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            inputArea.value = commandHistory[historyIndex];
+        } else {
+            historyIndex = commandHistory.length;
+            inputArea.value = '';
+        }
+    } else if (event.key === 'Tab') {
+        event.preventDefault(); // Plus de tabulation dans la textarea
+        const inputText = inputArea.value.trim();
+        const matchingCommands = findMatchingCommand(inputText);
+
+        if (matchingCommands.length === 1) {
+            inputArea.value = matchingCommands[0].command;
+        } else if (matchingCommands.length > 1) {
+            const suggestionsText = matchingCommands.map(cmd => cmd.command).join(' '.repeat(5));
+            document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<br><span id="tab_out">' + suggestionsText + '</span><br>';
+        }
     }
 });
