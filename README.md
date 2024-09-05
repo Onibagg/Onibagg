@@ -1,4 +1,4 @@
 - 👋 Hi, I’m @Onibagg
 - 👀 I’m interested in PHP & JS
 - 🌱 I’m currently learning at the IMT Nord Europe
-- 📫 You can reach me by ✨mail✨ : gabin.deme@etudiant.univ-rennes1.fr
+- 📫 You can reach me by ✨mail✨ : gabin.deme@etu.imt-nord-europe.fr
