@@ -46,6 +46,7 @@ document.addEventListener('click', function(event) {
 }, false);
 
 const helpCommands = [
+    { command: 'help', description: 'List all available commands' },
     { command: 'whois', description: 'Who is Gabin Demé?' },
     { command: 'socials', description: 'Contact me' },
     { command: 'education', description: 'Where am I from?' },
@@ -162,6 +163,7 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
                                 </a>
                             </span>
                         </span>
+                        <br>
 
                     `;
                 });
