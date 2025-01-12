@@ -73,6 +73,22 @@ function generateHelpOutput() {
     return output;
 }
 
+function generateSocialsOutput() {
+    return 'LinkedIn: <a href="https://www.linkedin.com/in/gabindeme/" target="_blank">linkedin.com/in/gabindeme</a><br>GitHub: <a href="">github.com/Onibagg</a>';
+}
+
+function generateWhoisOutput() {
+    return 'Name: Gabin Demé<br>Age: 21 years<br>Location: Paris, France<br>Occupation: Apprentice Pre-Sales Engineer at Harmonic<br>Interests: Sports, Music';
+}
+
+function generateEducationOutput() {
+    return 'I am an engineering student at IMT Nord Europe, studying Telecommunications and Computer Science.';
+}
+
+function generateEmploymentOutput() {
+    return 'I am currently working as an Apprentice Pre-Sales Engineer at Harmonic.';
+}
+
 const commandHistory = [];
 let historyIndex = -1;
 
@@ -98,6 +114,18 @@ document.getElementById('inputArea').addEventListener('keydown', function(event)
                 break;
             case 'help':
                 document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="help_out">' + generateHelpOutput() + '</p>';
+                break;
+            case 'whois':
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="whois_out">' + generateWhoisOutput() + '</p>';
+                break;
+            case 'socials':
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="whois_out">' + generateSocialsOutput() + '</p>';
+                break;
+            case 'education':
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="whois_out">' + generateEducationOutput() + '</p>';
+                break;
+            case 'employment':
+                document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<p id="whois_out">' + generateEmploymentOutput() + '</p>';
                 break;
             case 'cv':
                 document.getElementById('output').innerHTML += 'visitor@gabindeme.com:~$ ' + inputText + '<br><p id="cv_out">Downloading my CV...<p>';
